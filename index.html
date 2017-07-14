@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+		<title>Project Infoviz 2017</title>
+
+		<!-- Google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="sitestyle.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- D3.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+		<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+		<script src="radarChart.js"></script>	
+		<script src="sitescript.js"></script>
+		
+		
+	</head>
+
+
+	<body>
+		<nav class="navbar navbar-default" style="background-color: #286080;">
+			<div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="http://www.cs.odu.edu/~mkukunooru/Project%20Demo/index.html" style="color:white;">Insights Into American Football</a>
+			    </div>
+			   <!--  <ul class="nav navbar-nav">
+			      <li class="active"><a href="#">Home</a></li>
+			    </ul> -->
+			</div>
+		</nav>
+     	<div id="cover" style="display:none;"></div>
+		<div class="container" id="wholebody">
+			<div class="teams_container row">
+			
+				<div id="usmapplot" class="teams_usmapplot row" >
+					<!-- <h3 class="plotheading">US Map With Teams</h3> -->
+					<div class="row well outercover_teams_usmapplot">
+						
+
+						<div class="firstcol col-lg-5"> 
+							<!-- this is for team based US plot -->
+							<div class="leagueSelectionDiv"> <label>League&nbsp;</label><select class="leagueSelection"><option>Both</option><option>NFC</option> <option>AFC</option></select></div>
+							<div class="usmapheader"><label style="font-size: x-large; margin-top:5%;">NFL Teams Map</label>  
+							
+							</div>
+							
+
+
+							<div class="usmapwithteams" style="margin-left: -21%; margin-top:-8%"></div>
+							
+
+							<div class="superBowlWinnerDiv">
+								 <br /> <br />
+								<div class= "well"> 
+								<label style="margin-left:30%;">Season &nbsp;</label><select class="yearSelectionSBWinner"><option>2016</option><option>2015</option></select>
+								<br/>
+								<div class="winnerLayout row"> 
+									<div class="realWinner row">
+										<div class="col-lg-5">
+											<label style="font-size:x-large;"> Super Bowl Winner </label> 
+										</div>
+										<br/>
+										<div class="col-lg-9 winnerHelmetWithName" style="margin-left:5%;">
+											<div class="row">
+												<img class="winnerimg" src="./teamhelmets/transparent/ne.PNG"> 
+											</div>
+											<div class="row">
+												<label class="superBowlerTeamName"> New England Patriots </label>
+											</div>
+
+										</div>
+									</div>  
+								</div>
+								</div>
+							</div>
+
+							<div class="teamBasedMatchesCover row" style="display:none;">									
+									<div class="row tableHeadingDiv" style="margin-left: 10%">
+									<label> Matches played by 	<label class="selectedTeamLabel" style="font-size: larger;"> </label> </label> &nbsp; <select class="yearsel_teambased form-group">
+										<option>2016</option>
+										<option>2015</option></select>
+									</div>
+							</div>
+
+							<div class="row matchBasedActualtableDiv">
+								<table class="table teamBasedMatchesCover" style="display:none;" cellspacing="0" width="100%">
+										<thead>
+										    <tr>
+										       <th class='col-xs-3'>RND</th>
+										       <th class='col-xs-6'>Opponent</th>
+										       <th class='col-xs-3'>Result</th>
+										    </tr>
+										</thead>
+										<tbody>							      
+										</tbody>					
+								</table>
+							</div>	
+						</div>		
+
+						 <!-- this is for Player tables-->
+						<div class="topPlayerTableStats secondcol well col-lg-7">
+							<div class="gameLeadersHeader">
+								<label> Game Leaders</label>
+								<select class="yearSelPlayerPerformance"></select>	
+							</div>
+
+							<div class="leadertablegraphCover row"> 
+								<div class="highPassingYards col-lg-5">
+									  <label>Passing Leaders</label>
+									  <table class="table leaderstable table-striped well" purp="QB">
+									  	 <thead>
+									      <tr>
+									        <th>Name</th>
+									        <th>Yards</th>
+									         <th>Team</th>
+									      </tr>
+									    </thead>
+									    <tbody>
+									    </tbody>
+									    <tfoot>
+											<tr>
+										       <td colspan="2"></td><td><button type="button" class="btn btn-primary exploreButt expolrePassingLeader">Explore</button></td>
+										    </tr>
+										</tfoot>
+									  </table>
+								</div>
+
+								<div class="col-lg-7 playertrends playertrendsQB">
+
+								</div>								
+							</div>
+							<br/>
+							<div class="leadertablegraphCover row">
+								<div class="highRushingYards col-lg-5">
+								<label>Rushing Leaders</label>
+									  <table class="table leaderstable table-striped well" purp="RB">
+									  	 <thead>
+									      <tr>							   
+									        <th>Name</th>
+									        <th>Yards</th>
+									         <th>Team</th>
+									      </tr>
+									    </thead>
+									    <tbody>
+									    </tbody>
+									    <tfoot>
+											<tr>
+										       <td colspan="2"></td><td><button type="button" class="btn btn-primary exploreButt expolreRushingLeader">Explore</button></td>
+										    </tr>
+										</tfoot>
+									  </table>
+								</div>
+								<div class="col-lg-7 playertrends playertrendsRB">
+								</div>
+							</div>
+							<br/>
+							<div class="leadertablegraphCover row"> 
+								<div class="highReceivingYards col-lg-5">
+									<label>Receiving Leaders</label>
+									  <table class="table leaderstable table-striped well" purp="WR">
+									  	 <thead>
+									      <tr>
+									        <th>Name</th>
+									        <th>Yards</th>
+									         <th>Team</th>
+									      </tr>
+									    </thead>
+									    <tbody>
+									    </tbody>
+									    <tfoot>
+											<tr>
+										       <td colspan="2"></td><td><button type="button" class="btn btn-primary exploreButt expolreReceivingLeader">Explore</button></td>
+										    </tr>
+										</tfoot>
+									  </table>
+								</div>
+								<div class="col-lg-7 playertrends playertrendsWR">
+								</div>
+							</div>
+							
+						</div>	
+
+						<div class="matchBasedStats secondcol col-lg-2" style="display: none;"> 
+	
+								<div class="matchStatsHeader" > <label style="color:black;"> Game Stats </label>&nbsp;<label class="hometeam"> </label>&nbsp; <b> vs </b>&nbsp;<label class="oppteam"> </label> </div>
+								
+								<div class="middlecol well allSmallStats">	
+
+								<div class="matchWinByHeader row"> <label class="matchWinByLabel"> </label></div>
+
+									<div class="totalyardscover row well" >
+										<label style="color:black;">Total Yards</label>
+
+										<div class="progressBinder">
+											<div class="homeprogessvallabel"> <h3></h3></div>
+											<div class="progress homeprogress"></div> 
+										</div>
+
+										<div class="progressBinder">
+											<div class="opponentprogressvallabel"> <h3></h3></div>
+											<div class="progress opponentprogress"></div>
+										</div>
+
+
+									</div> 
+
+									<div class="teampossessiondonutcover row well">
+										<label style="color:black;">Possession</label>
+
+										<div class="possessionTimingHeader">
+											<label class="oppteam oppositionPossessionTiming"> </label> 	<label class="hometeam homePossessionTiming"> </label>
+										</div>
+
+										<div class="teampossessiondonutchart">
+											
+										</div>	
+									</div>
+
+									<div class="firstdownscover row well">
+										<label style="color:black;">First Downs</label>
+
+										<div class="progressBinder">
+											<div class="homeprogessvallabel"> <h3> </h3></div>
+											<div class="progress homeprogress"></div> 
+										</div>
+
+										<div class="progressBinder">
+											<div class="opponentprogressvallabel"> <h3> </h3></div>
+											<div class="progress opponentprogress"></div>
+										</div>
+									</div>
+									<div class="gameleaderscover row well">
+									<label style="color:black;">Quarter Scores</label>
+									 <table class="table quarterScores table-striped well" purp="RB">
+									  	 <thead>
+									      <tr>							   
+									        <th> </th>
+									        <th>Q1</th>
+									         <th>Q2</th>
+									          <th>Q3</th>
+									           <th>Q4</th>
+									            <th>T</th>
+									      </tr>
+									    </thead>
+									    <tbody>
+											<tr></tr>
+									    </tbody>
+									  	</table>
+									</div>
+								</div>		
+
+						</div>	
+
+						<div class="teams_quarterwinsloseplot thirdcol col-lg-4" style="display:none; margin-left:8%; margin-top:4%;">
+							<div class="row well outercover_teams_quarterwinsloseplot">
+								
+								<div> <label class="plotheading_line_winslose"> Wins/Lose Stats of <label class="teamName"> </label> over the Years</label> </div>
+								<form class="winLoseMatchForm">
+									    <label><input type="radio" name="datasetWinLoseMatch" id="dataset" value="win" checked> Win</label>
+									    <label><input type="radio" name="datasetWinLoseMatch" id="dataset" value="loss">Loss</label>
+								</form>
+								<div class="line_winslose" style="margin-top:5%;"></div>
+								<br />
+								<div> <label class="plotheading_bar_quartertrends"><b class="year">2016 </b> Quarter based Wins/Losses </label> </div>
+								<div class="bar_quartertrends" style="margin-top:2%;">
+									
+								</div>
+							</div>
+						</div>
+
+						<a href="" class="goBackToPlayerstats" style=" top: 95%;left: 90%;cursor:pointer; display:none;">
+						<button type="button" title="Back to Player stats" class="btn btn-info">Player Stats</button></a>
+						
+					</div>
+				</div>
+
+				<div >  
+				</div>
+
+
+			</div>
+
+			 <!-- this is the container for the, player based data attribures  -->
+			<div class="player_container row" style="display:none;">
+				<div class="player_radarplot row well" id="player_radarplot">
+					<h3 class="plotheading">Compare Players</h3>
+					<div class="row well outercover_player_radarplot">
+						<div class="row topLevelFiltersDiv playerProfileAnalysis" style="margin-top:3%">
+							<div class="yearAndPosSelRow row">
+								  <div class="col-lg-6">
+									  <div class="form-group">
+									    <label for="playerProfileYear">Year:</label>
+									    <select class="yearSelPlayerProfile" id="playerProfileYear"><option>2002</option> <option>2003</option></select>		    
+									  </div>
+								  </div>
+								<div class="col-lg-6">
+									<div class="form-group">
+									     <label for="playerProfilePosition">Position:</label>
+									    <select class="posSelPlayerProfile" id="playerProfilePosition"><option>select</option><option value="QB">Passing</option> <option value="RB">Rushing</option><option value="WR">Receicing</option><option value="D">Defence</option></select>
+								    </div>
+								</div>
+							</div>
+							<div class="teamAndPlayerSelRow row" style="display:none;">
+								<div class="col-lg-3 teamAndPlayerGrp">
+								  <div class="form-group">
+								     <label for="playerTeam">Team:</label>
+								    <select class="playerTeam" curTeam=0> <option>team1</option> <option>team2</option></select>
+								  </div>
+								  <div class="form-group ">
+								     <label for="playerProfilePlayerName">Player:</label>
+								    <select class="playerSelPlayerProfile" curplayer=0> <option>Rich Gannon</option> <option>player2</option></select>
+								  </div>
+
+								</div>
+								<div class="col-lg-3 teamAndPlayerGrp">
+								  <div class="form-group">
+									   <label for="playerTeam">Team:</label>
+									  <select class="playerTeam" curTeam=1> <option>team1</option> <option>team2</option></select>
+
+								  </div>
+								  <div class="form-group">
+								     <label for="playerProfilePlayerName">Player:</label>
+								    <select class="playerSelPlayerProfile" curplayer=1> <option>Rich Gannon</option> <option>player2</option></select>
+								  </div>
+								</div>
+								<div class="col-lg-3 teamAndPlayerGrp">
+								   <div class="form-group">
+									   <label for="playerTeam">Team:</label>
+									<select class="playerTeam" curTeam=2> <option>team1</option> <option>team2</option></select>
+
+								  </div>
+								  <div class="form-group">
+								     <label for="playerProfilePlayerName">Player:</label>
+								    <select class="playerSelPlayerProfile" curplayer=2> <option>Drew Bledsoe</option> <option>player2</option></select>
+								  </div>
+								</div>
+								<!-- <div class="col-lg-3">
+								  <div class="form-group">
+									  <label for="playerTeam">Team:</label>
+									<select class="playerTeam"> <option>team1</option> <option>team2</option></select>
+
+								  </div>	
+								  <div class="form-group">
+								     <label for="playerProfilePlayerName">Player:</label>
+								    <select class="playerSelPlayerProfile"> <option>Drew Bledsoe</option> <option>player2</option></select>
+								  </div>
+								</div> -->
+								<div class="col-lg-3">
+									<button class="btn btn-success comparePlayerButt" style="margin-left: -92%;margin-top: 10%;">Compare</button>
+								</div>
+							</div>	
+						</div>
+						<div class="combinedRFaceted">
+								<form class="combinedRFacetedForm" style="display:none;">
+									    <label><input type="radio" name="combinedRFaceted" id="noFacet" value="nofacet" checked=""> Combined</label>
+									    <label><input type="radio" name="combinedRFaceted" id="faceted" value="facet">Individual</label>
+								</form> 
+						</div>
+
+						<div class="combinedRadorPlot row" >
+							<div class="radarChart col-lg-8"></div>
+							<div class="radarChartLegend col-lg-4" style="margin-left:-27%;margin-top: 5%;">
+								<ul>
+									<li><label class="playerName playerName1"></label><div style="width:8px;height:8px;background:#edc951;"></div></li>
+									<li><label class="playerName playerName2"></label><div style="width:8px;height:8px; background:#cc333f;"></div></li>
+									<li><label class="playerName playerName3"></label><div style="width:8px;height:8px;background:#00a0b0;"></div></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="facetedRadorPlot row" style="display:none;">
+							<div class="radarChart1  col-lg-4"></div>
+							<div class="radarChart2 col-lg-4"></div>
+							<div class="radarChart3 col-lg-4"></div>
+						</div>
+
+					</div>
+					<div class="goToTopHomeScren" style="margin-left: 85%; cursor:pointer;">
+						<img  class="goToTop"  src="back-to-top.png">
+					</div>
+				</div>
+
+
+
+			</div>
+		 
+		</div>
+
+		<div class="teamHelmetToolTip" style="display:none;"><img src="./teamhelmets/ari.PNG"><br /><label class="helmetTeamName"></label></div>
+
+	</body>
+</html>

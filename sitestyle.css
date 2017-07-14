@@ -1,0 +1,289 @@
+		body {
+				font-family: 'Open Sans', sans-serif;
+				font-size: 11px;
+				font-weight: 300;
+				fill: #242424;
+				text-align: center;
+				cursor: default;
+			}
+			
+			.legend {
+				font-family: 'Raleway', sans-serif;
+				fill: #333333;
+			}
+			
+			.tooltip {
+				fill: #333333;
+			}
+
+.plotheading{
+	margin-left: -70%;
+    color: #0b0a5d;
+}
+
+/******* this is from the us mpa css
+/* On mouse hover, lighten state color */
+path:hover {
+	fill-opacity: .7;
+}
+
+/* Style for Custom Tooltip */
+div.teams_usmapplot .tooltip {   
+ 	position: absolute;           
+	text-align: center;           
+	width: 60px;                  
+	height: 40px;                 
+	padding: 2px;             
+	font: 12px sans-serif;        
+	background: white;   
+	border: 0px;      
+	border-radius: 8px;           
+	pointer-events: none;         
+}
+
+.teamHelmetToolTip{
+    position: absolute;           
+    text-align: center;                            
+    padding: 2px;             
+    font: 12px sans-serif;        
+    border: 0px;      
+    border-radius: 8px;           
+    pointer-events: none;
+}
+
+
+
+
+/* style from line graphs */
+
+.axis {
+   font: 10px sans-serif;
+}
+.axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+}
+
+
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+.legend {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 60%;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+div.tooltip {   
+    position: absolute;         
+    text-align: center;         
+    width: 100px;                    
+    height: 40px;                   
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightsteelblue; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;           
+}
+
+.teams_container{
+	margin-left: -23% !important;
+	width: 146%; 
+}
+
+.table-fixed thead {
+  width: 100%;
+}
+.table-fixed tbody {
+  height: 215px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+  text-align: left;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+
+
+/*css related to donut chart */
+.teampossessiondonutcover svg {
+	width: 100%;
+	height: 100%;
+}
+
+.teampossessiondonutcover path.slice{
+	stroke-width:2px;
+}
+
+.teampossessiondonutcover polyline{
+	opacity: .3;
+	stroke: black;
+	stroke-width: 2px;
+	fill: none;
+}
+
+table tbody tr{
+	cursor: pointer;
+}
+
+.teams_quarterwinsloseplot {
+	margin-left:4%;
+}
+
+.teampossessiondonutcover{
+	margin-left:10%;
+}
+
+.dataTables_paginate.paging_simple_numbers{
+	margin-left: -1.5%
+}
+
+
+
+
+/*css for the bar graph http://bl.ocks.org/juan-cb/ab9a30d0e2ace0d2dc8c
+*/
+
+.bar {
+    fill: #002b5a;
+    fill-opacity: .9;
+}
+
+ .toolTip {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        position: absolute;
+        display: none;
+        width: auto;
+        height: auto;
+        background: none repeat scroll 0 0 white;
+        border: 0 none;
+        border-radius: 8px 8px 8px 8px;
+        box-shadow: -3px 3px 15px #888888;
+        color: black;
+        font: 12px sans-serif;
+        padding: 5px;
+        text-align: center;
+    }
+
+.row_selected td {
+    background-color: #bbdef3 !important; /* Add !important to make sure override datables base styles */
+ }
+
+  th{
+    text-align: center !important;
+ }
+
+ .exploreButt{
+       height: 30px;
+ }
+
+ .allSmallStats{
+    width:154% !important;
+ }
+.matchStatsHeader{  
+    width:154% !important;
+}
+
+ .progress{
+    width: 265px !important;
+ }
+
+ .homeprogessvallabel{
+    width: 12%;
+    float: right;
+    height: 3%;
+    color: #a8a8a8;
+        margin-top: -7%;
+    margin-right: 11%;
+ }
+
+ .opponentprogressvallabel{
+    width: 12%;
+    float: right;
+    height: 3%;
+    color: #02244a;
+       margin-top: -7%;
+    margin-right: 11%;
+ }
+
+ #cover {
+    background: url("ajax_loader2.gif") no-repeat scroll center center #FFF;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    z-index: 1
+}
+
+.playertrends{
+    margin-top:3%;
+}
+
+.container{
+     width: 65% !important;
+}   
+
+.leaderstable thead{
+    background-color: #2e8dc3;
+    color: white;
+}
+
+.leadertablegraphCover label{
+        margin-left: -63%;
+        font-size: larger;
+}
+
+.radarChartLegend li{
+     list-style-type: none;
+}
+
+.radarChartLegend div{
+    margin-left: 30%;
+    margin-top: -5.5%;
+}
+
+.teamdot{
+    cursor: pointer;
+}
+
+
+.homePossessionTiming{
+    margin-left: -3%;
+    position: absolute;
+    top: 36%;
+}
+
+.oppositionPossessionTiming{
+   
+    margin-left: -36%;
+    position: absolute;
+    top: 36%;
+}
+
+.leagueSelectionDiv{
+    margin-left: 65%;
+}
+
+.playertrends {
+    margin-left: -5%;
+}
+
+.leadertablegraphCover{
+    margin-left: 3% !important;
+}
+

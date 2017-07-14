@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Bar Chart with Manipulation</title>
+    <style>
+    .axis {
+        font: 10px sans-serif;
+    }
+    .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+    .y.axis path {
+        display: none;
+    }
+
+
+body { font: 12px Arial;}
+
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+div.tooltip {   
+    position: absolute;         
+    text-align: center;         
+    width: 60px;                    
+    height: 28px;                   
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightsteelblue; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;           
+}
+    </style>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+<div id="container1"  width="600" min-height="400" class="row"  align="center"> 
+      <svg width="1200" height="800" class="svgElement1"></svg>
+</div>
+
+<div id="container2"  width="1000" min-height="900" class="row"  align="center"> 
+      <svg width="1200" height="800" class="svgElement2"></svg>
+</div>
+
+</body>
+<script>
+
+
+function drawBoth(){
+
+
+    function drawBarChart()
+    {
+        var barChart={};
+
+        var svgElement1 = '<svg width="1000" height=400 class="svgElement1"></svg>';
+        document.getElementById("container1").innerHTML="";
+        document.getElementById("container1").innerHTML=svgElement1;
+
+        var margin = {
+            top: 20,
+            right: 20,
+            bottom: 30,
+            left: 40
+        },
+        width = 960 - margin.left - margin.right,
+        height = 350 - margin.top - margin.bottom;
+
+
+        var y = d3.scale.ordinal()
+            .rangeRoundBands([0, height], .1);
+
+        var x = d3.scale.linear()
+            .range([0, width]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom")
+            .ticks(10, "%");
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left");
+
+        var color = d3.scale.category20c();
+
+        var svg = d3.select(".svgElement1").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        d3.tsv("data.tsv", type, function(error, data) {
+            x.domain([0, d3.max(data, function(d) {
+                return d.frequency;
+            })]);
+            y.domain(data.map(function(d) {
+                return d.letter;
+            }));
+
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+                .append("text")
+                .attr("transform", "rotate(0)")
+                .attr("y", 6)
+                .attr("dy", "1.91em")
+                .style("text-anchor", "start")
+                .text("Frequency");
+
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis);
+
+            var bars = svg.selectAll(".bar")
+                .data(data)
+                .enter()
+                .append("rect")
+                .attr("class", "bar");
+            
+            bars.attr("y", function(d) {
+                return y(d.letter);
+            })
+                .attr("height", y.rangeBand())
+                .attr("x", 0)//function(d) {
+                    //return x(d.frequency);
+                //})
+                .attr("width", function(d) {
+                    return x(d.frequency);
+                })
+                .attr("fill", function(d, i) {
+                    return color(i);
+                })
+                .attr("id", function(d, i) {
+                    return i;
+                })
+                .on("mouseover", 
+                    function() {
+                    d3.select(this)
+                    	.attr("fill", "red");
+                }
+
+                )
+                .on("mouseout",
+                    function(d, i) {
+                    d3.select(this).attr("fill", function() {
+                        return "" + color(this.id) + "";
+                    });
+                });
+
+            bars.append("title")
+                .text(function(d) {
+                    return d.letter;
+                });
+
+        });
+
+        function mouseover(d){  // utility function to be called on mouseover.
+            // filter for selected state.
+            // var st = fData.filter(function(s){ return s.State == d[0];})[0],
+            //     nD = d3.keys(st.freq).map(function(s){ return {type:s, freq:st.freq[s]};});
+               
+            // call update functions of pie-chart and legend.    
+            pC.update(nD);
+            // leg.update(nD);
+        }
+        
+        function mouseout(d){    // utility function to be called on mouseout.
+            // reset the pie-chart and legend.    
+            pC.update(tF);
+            // leg.update(tF);
+        }
+
+        function type(d) {
+            d.frequency = +d.frequency;
+            return d;
+        }
+    }
+    drawBarChart();
+
+
+    function drawLineChart()
+    {
+        var lineChart= {};
+
+        var svgElement2 = '<svg width="1000" height=500 class="svgElement2"></svg>';
+        document.getElementById("container2").innerHTML="";
+        document.getElementById("container2").innerHTML=svgElement2;
+
+
+        var margin = {top: 30, right: 20, bottom: 30, left: 50},
+        width = 600 - margin.left - margin.right,
+        height = 270 - margin.top - margin.bottom;
+
+        // Parse the date / time
+        var parseDate = d3.time.format("%d-%b-%y").parse;
+        var formatTime = d3.time.format("%e %B");
+
+        // Set the ranges
+        var x = d3.time.scale().range([0, width]);
+        var y = d3.scale.linear().range([height, 0]);
+
+        // Define the axes
+        var xAxis = d3.svg.axis().scale(x)
+            .orient("bottom").ticks(5);
+
+        var yAxis = d3.svg.axis().scale(y)
+            .orient("left").ticks(5);
+
+        // Define the line
+        var valueline = d3.svg.line()
+            .x(function(d) { return x(d.date); })
+            .y(function(d) { return y(d.close); });
+
+        // Define the div for the tooltip
+        var div = d3.select("body #container2").append("div")   
+            .attr("class", "tooltip")               
+            .style("opacity", 0);
+
+        // Adds the svg canvas
+        var svg = d3.select(".svgElement2")
+            .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+                .attr("transform", 
+                      "translate(" + margin.left + "," + margin.top + ")");
+
+        // Get the data
+        d3.csv("data.csv", function(error, data) {
+            data.forEach(function(d) {
+                d.date = parseDate(d.date);
+                d.close = +d.close;
+            });
+
+            // Scale the range of the data
+            x.domain(d3.extent(data, function(d) { return d.date; }));
+            y.domain([0, d3.max(data, function(d) { return d.close; })]);
+
+            // Add the valueline path.
+            svg.append("path")
+                .attr("class", "line")
+                .attr("d", valueline(data));
+
+            // Add the scatterplot
+            svg.selectAll("dot")    
+                .data(data)         
+            .enter().append("circle")                               
+                .attr("r", 5)       
+                .attr("cx", function(d) { return x(d.date); })       
+                .attr("cy", function(d) { return y(d.close); })     
+                .on("mouseover", function(d) {      
+                    div.transition()        
+                        .duration(200)      
+                        .style("opacity", .9);      
+                    div .html(formatTime(d.date) + "<br/>"  + d.close)  
+                        .style("left", (d3.event.pageX) + "px")     
+                        .style("top", (d3.event.pageY - 28) + "px");    
+                    })                  
+                .on("mouseout", function(d) {       
+                    div.transition()        
+                        .duration(500)      
+                        .style("opacity", 0);   
+                });
+
+            // Add the X Axis
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+
+            // Add the Y Axis
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis);
+
+        });
+    }
+    drawLineChart();
+
+}
+drawBoth();
+</script>
+
+
+</html>

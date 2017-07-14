@@ -1,0 +1,33 @@
+teamcode,place,lat,lon,league,conf
+chi,Chicago Bears,41.831667,-87.633611,nfc,north
+gb,Green Bay Packers,44.504167,-87.983889,nfc,north
+ari,Arizona Cardinals,33.5275,-112.2625,nfc,west
+atl,Atlanta Falcons,33.739444,-84.389444,nfc,south
+bal,Baltimore Ravens,39.329444,-76.601389,afc,north
+buf,Buffalo Bills,42.915114,-77.862009,afc,east
+car,Carolina Panthers,35.225833,-80.852778,nfc,south
+cin,Cincinnati Bengals,40.116667,-83.535278,afc,north
+cle,Cleveland Browns,41.206111,-81.699444,afc,north
+dal,Dallas Cowboys,32.779722,-96.759722,nfc,east
+den,Denver Broncos,39.743889,-105.02,afc,west
+det,Detroit Lions,43.34,-84.045556,nfc,north
+hou,Houston Texans,29.685,-95.407778,afc,south
+ind,Indianapolis Colts,39.760056,-86.163806,afc,south
+jax,Jacksonville Jaguars,30.323889,-81.6375,afc,south
+kc,Kansas City Chiefs,39.048889,-94.483889,afc,west
+mia,Miami Dolphins,25.77805,-80.219808,afc,east
+min,Minnesota Vikings,44.973889,-93.258056,nfc,north
+ne,New England Patriots,42.0927,-71.267442,afc,east
+no,New Orleans Saints,29.950833,-90.081111,nfc,south
+nyg,New York Giants,44.00,-73.958056,nfc,east
+nyj,New York Jets,41.755556,-73.848056,afc,east
+oak,Oakland Raiders,37.794108,-122.263069,afc,west
+phi,Philadelphia Eagles,39.993056,-74.655833,nfc,east
+pit,Pittsburgh Steelers,40.441944,-79.954167,afc,north
+lar,Los Angeles Rams,34.0522,-118.2437,nfc,west
+lac,Los Angeles Chargers,32.720833,-117.150556,afc,west
+sf,San Francisco 49ers,38.713611,-122.386111,nfc,west
+sea,Seattle Seahawks,47.595278,-121.331667,nfc,west
+tb,Tampa Bay Buccaneers,27.975833,-82.503333,nfc,south
+ten,Tennessee Titans,35.121111,-89.9775,afc,south
+wsh,Washington Redskins,38.9175,-77.020278,nfc,east
