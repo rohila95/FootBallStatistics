@@ -74,7 +74,7 @@ function start(){
   		$(document).on("change",".yearSelectionSBWinner",function(){
   			var teamcode = superBowlArray[$(this).val()];
   			// get the SuperBowl winner
-  			$(".winnerimg").attr("src","./teamhelmets/transparent/"+teamcode +".PNG" );
+  			$(".winnerimg").attr("src","./teamhelmets/transparent/"+teamcode +".png" );
 
 				var teamName="";
 
@@ -85,7 +85,7 @@ function start(){
 						}
 
   			$(".superBowlerTeamName").html(teamName);
-			
+
 		});
 
   		$(document).on("change",".yearSelPlayerProfile",function(){
@@ -108,7 +108,7 @@ function start(){
 
 
 		$(document).on("change",".playerTeam",function(){
-			
+
 			var selectedyear = $(".yearSelPlayerProfile").val();
 			var selectedTeam = $(this).val();
 				var playerOptionsStr="";
@@ -120,11 +120,11 @@ function start(){
 			$(this).parents(".teamAndPlayerGrp").find(".playerSelPlayerProfile").html(playerOptionsStr);
 
 			if(comingFromAuto){
-				$(this).parents(".teamAndPlayerGrp").find(".playerSelPlayerProfile").val(curCatTable.find("tr").eq($(this).attr("curTeam")).find("td").eq(0).html());	
-			
+				$(this).parents(".teamAndPlayerGrp").find(".playerSelPlayerProfile").val(curCatTable.find("tr").eq($(this).attr("curTeam")).find("td").eq(0).html());
+
 				if($(this).attr("curTeam") == 2){
-					$(".comparePlayerButt").trigger("click");	
-					comingFromAuto = false;	
+					$(".comparePlayerButt").trigger("click");
+					comingFromAuto = false;
 				}
 
 			}
@@ -173,21 +173,21 @@ function start(){
 
 	         $(".oppteam").html($(this).find("td").eq(1).html()).css("color",teamColors[1]);
 
-	         $(".possessionTimingHeader .hometeam").html($.trim($(this).attr("possession").split("-")[0]));		
+	         $(".possessionTimingHeader .hometeam").html($.trim($(this).attr("possession").split("-")[0]));
 	         $(".possessionTimingHeader .oppteam").html($.trim($(this).attr("possession").split("-")[1]));
 
 	        // $(this).css('background-color', "#D6D5C3");
 
-			var donutData = donutDataHelper($(this));	
+			var donutData = donutDataHelper($(this));
 			drawTotalYards ($(this));
-			drawPossesionDonut(donutData);	
+			drawPossesionDonut(donutData);
 			drawFirstDowns($(this));
 
 			var quarterScoresTr="<tr><td><label>"+$(".selectedTeamLabel").html() +"</label></td><td>"+$.trim($(this).attr("q1").split("-")[0]) +"</td><td>"+ $.trim($(this).attr("q2").split("-")[0])+"</td><td>"+$.trim($(this).attr("q3").split("-")[0]) +"</td><td>"+$.trim($(this).attr("q4").split("-")[0]) +"</td><td>"+ homeTeamScore  +"</td></tr>";
 			quarterScoresTr+="<tr><td><label>"+$(this).find("td").eq(1).html() +"</label></td><td>"+$.trim($(this).attr("q1").split("-")[1]) +"</td><td>"+ $.trim($(this).attr("q2").split("-")[1])+"</td><td>"+$.trim($(this).attr("q3").split("-")[1]) +"</td><td>"+$.trim($(this).attr("q4").split("-")[1]) +"</td><td>"+ OppTeamScore  +"</td></tr>";
 
 			$(".quarterScores tbody").html(quarterScoresTr);
-		});	
+		});
 
 		// click registration on teambalsed table stat row
 		$(document).on("click",".leaderstable tbody tr",function(){
@@ -205,7 +205,7 @@ function start(){
 
 			getYearWiseGameLeaders("QB","highPassingYards");
 			getYearWiseGameLeaders("RB","highRushingYards");
-			getYearWiseGameLeaders("WR","highReceivingYards");	
+			getYearWiseGameLeaders("WR","highReceivingYards");
 
 
 
@@ -231,11 +231,11 @@ function start(){
 
 				/*$(".teamAndPlayerGrp").each(function(indx,ele){
 					var index = indx;
-					$(this).find(".playerTeam").val(curTable.find("tr").eq(0).attr("team")).trigger("change");		
-						$(this).find(".playerSelPlayerProfile").val(curTable.find("tr").eq(0).find("td").eq(0).html());	
+					$(this).find(".playerTeam").val(curTable.find("tr").eq(0).attr("team")).trigger("change");
+						$(this).find(".playerSelPlayerProfile").val(curTable.find("tr").eq(0).find("td").eq(0).html());
 						if(index == 2){
-							$(".comparePlayerButt").trigger("click");			
-						}			
+							$(".comparePlayerButt").trigger("click");
+						}
 				});*/
 
 		});
@@ -256,13 +256,13 @@ function start(){
 	        {
 	       			$(".combinedRadorPlot").show();
 	       			$(".facetedRadorPlot").hide();
-	        }	
+	        }
 	        else
 	        {
 	           	$(".combinedRadorPlot").hide();
 	           	$(".facetedRadorPlot").show();
 	        }
-	       
+
 	    });
 
 
@@ -293,11 +293,11 @@ function drawPlayerRadialGraph(){
 					    }
 				    }
 				});
-				// console.log(playerDictionary);	
+				// console.log(playerDictionary);
 				maxattrArray = {};
 
 				for(var index in attrArray[$(".posSelPlayerProfile").val()]){
-					maxattrArray[attrArray[$(".posSelPlayerProfile").val()][index]] = 0;		
+					maxattrArray[attrArray[$(".posSelPlayerProfile").val()][index]] = 0;
 				}
 				for(var key in playerDictionary[selectedyear]){
 					Object.keys(maxattrArray).forEach(function(d){
@@ -311,7 +311,7 @@ function drawPlayerRadialGraph(){
 
 				//here all the jsons regarding the players statistics are read
 				var playerOptionsStr="";
-				
+
 
 				for(var i=0;i<3;i++){
 					playerOptionsStr ="";
@@ -319,7 +319,7 @@ function drawPlayerRadialGraph(){
 						if(playerDictionary[selectedyear][player]["TEAM"] == $(".playerTeam").eq(i).val() ){
 							playerOptionsStr += "<option>"+player+"</option>";
 						}
-							
+
 				 	});
 				 	$(".playerSelPlayerProfile").eq(i).html(playerOptionsStr);
 				}
@@ -330,12 +330,12 @@ function drawPlayerRadialGraph(){
 					for(var i=0;i<3;i++){
 						$(".teamAndPlayerGrp").eq(i).find(".playerTeam").val(curCatTable.find("tr").eq(i).attr("team")).trigger("change");
 					}
-						
+
 				}
-					
+
 
 		});
-	
+
 }
 
 
@@ -349,7 +349,7 @@ function getYearWiseGameLeaders(filetype,catergory){
 	var selectedyear = $(".yearSelPlayerPerformance").val();
 	var playerCount = 0;
 		d3.json("./datasrc/leaders_"+filetype+".json", function(error, dataFromJsonFile) {
-				
+
 				dataFromJsonFile.rows.forEach(function(obj) {
 				    //console.log(obj);
 				    if(obj["YEAR"] == selectedyear){
@@ -371,7 +371,7 @@ function getYearWiseGameLeaders(filetype,catergory){
 				});
 
 
-				console.log(passingPlayerDic);	
+				console.log(passingPlayerDic);
 				//here all the jsons regarding the players statistics are read
 				var playerTrStr="";
 
@@ -385,12 +385,12 @@ function getYearWiseGameLeaders(filetype,catergory){
 								teamName = teamsAndCodes["AFC"][passingPlayerDic[selectedyear][player]["TEAM"].toLowerCase()];
 						}
 
-					playerTrStr+="<tr team='"+ passingPlayerDic[selectedyear][player]["TEAM"] + "'><td>"+ player +"</td><td>"+passingPlayerDic[selectedyear][player]["YDS"] +"</td><td>"+ teamName +"</td></tr>"; 
+					playerTrStr+="<tr team='"+ passingPlayerDic[selectedyear][player]["TEAM"] + "'><td>"+ player +"</td><td>"+passingPlayerDic[selectedyear][player]["YDS"] +"</td><td>"+ teamName +"</td></tr>";
 				}
 				$("."+catergory+" tbody").empty();
 				$("."+catergory+" tbody").append(playerTrStr);
 
-				if(filetype =="WR"){						
+				if(filetype =="WR"){
 						$(".leaderstable tbody").eq(0).find("tr").eq(0).trigger("click");
 				}
 		});
@@ -413,7 +413,7 @@ function displayHelperRadiusPlot(){
 	 	});
 
 	 	$(".yearSelPlayerProfile").html(yearOptionForRadiusMap);*/
-	 
+
 	 	dataForPPRador =[];
 
 
@@ -437,7 +437,7 @@ function displayHelperRadiusPlot(){
 				});
 				dataForPPRador.push(innerObjArr);
 		});
-		
+
 		var color = d3.scale.ordinal()
 			.range(["#EDC951","#CC333F","#00A0B0"]);
 		var radarChartOptions = {
@@ -493,13 +493,13 @@ function drawTeamsOnUSMapGraph(){
 
 	// Append Div for tooltip to SVG
 	var div = d3.select(".usmapwithteams")
-	.append("div")   
-	.attr("class", "tooltip")               
+	.append("div")
+	.attr("class", "tooltip")
 	.style("opacity", 0);
 
 	/*var div = d3.select(".usmapwithteams")
-	.append("div")   
-	.attr("class", "tooltipHelmets")               
+	.append("div")
+	.attr("class", "tooltipHelmets")
 	.style("opacity", 0);
 */
 	// Load in my states data!
@@ -514,7 +514,7 @@ function drawTeamsOnUSMapGraph(){
 				// Grab State Name
 				var dataState = data[i].state;
 
-				// Grab data value 
+				// Grab data value
 				var dataValue = data[i].visited;
 
 					// Find the corresponding state inside the GeoJSON
@@ -522,7 +522,7 @@ function drawTeamsOnUSMapGraph(){
 						var jsonState = json.features[j].properties.name;
 						if (dataState == jsonState) {
 							// Copy the data value into the JSON
-							json.features[j].properties.visited = dataValue; 
+							json.features[j].properties.visited = dataValue;
 							// Stop looking through the JSON
 							break;
 						}
@@ -570,46 +570,46 @@ function drawTeamsOnUSMapGraph(){
 				.attr("r", function(d) {
 					return 6;
 				})
-				.style("fill", "#00448e")	
-				.style("opacity", 0.85)	
-				// Modification of custom tooltip code provided by Malcolm Maclean, "D3 Tips and Tricks" 
+				.style("fill", "#00448e")
+				.style("opacity", 0.85)
+				// Modification of custom tooltip code provided by Malcolm Maclean, "D3 Tips and Tricks"
 				// http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
-				.on("mouseover", function(d) {      
+				.on("mouseover", function(d) {
 					/*var img=div.append("img");
 					img.attr("src","./teamhelmets/"+d.teamcode+".PNG")*/
-					/*div.transition() .duration(200)      
-					.style("opacity", .9);      
+					/*div.transition() .duration(200)
+					.style("opacity", .9);
 					div.text(d.place)
-					.style("left", (d3.event.pageX-105) + "px")     
-					.style("top", (d3.event.pageY-100) + "px"); 
+					.style("left", (d3.event.pageX-105) + "px")
+					.style("top", (d3.event.pageY-100) + "px");
 */					$(".usmapsvg").find("circle[conf='"+d.conf +"'][league='"+d.league +"']").css("fill","green");
 					$(".teamHelmetToolTip").show("slow");
-					$(".teamHelmetToolTip").find("img").attr("src","./teamhelmets/transparent/"+d.teamcode+".PNG");
+					$(".teamHelmetToolTip").find("img").attr("src","./teamhelmets/transparent/"+d.teamcode+".png");
 					$(".teamHelmetToolTip").find(".helmetTeamName").html(d.place+"<br/>"+d.league.toUpperCase()+" "+d.conf.charAt(0).toUpperCase() + d.conf.slice(1));
 					$(".teamHelmetToolTip").css({
 							position: 'absolute',
 	   				 		top: event.pageY,
-		    				left: event.pageX		    				
+		    				left: event.pageX
 						});
-			    	
-					console.log("Team Hovered:"+d.teamcode);
-				})   
 
-				// fade out tooltip on mouse out               
-				.on("mouseout", function(d) {  
+					console.log("Team Hovered:"+d.teamcode);
+				})
+
+				// fade out tooltip on mouse out
+				.on("mouseout", function(d) {
 
 					$(".usmapsvg").find("circle").css("fill","#00448e");
 
-					div.transition()        
-					.duration(500)      
-					.style("opacity", 0);  
+					div.transition()
+					.duration(500)
+					.style("opacity", 0);
 					 $(".teamHelmetToolTip").hide();
 					 $(".selectedTeamOnUS").css("fill","green");
 
 				})
-				// onclick               
-				.on("click", function(d) { 
-					
+				// onclick
+				.on("click", function(d) {
+
 					$(".usmapsvg .teamdot").css("fill","#00448e");
 					$(".selectedTeamOnUS").removeClass("selectedTeamOnUS");
 					$(this).addClass("selectedTeamOnUS");
@@ -624,7 +624,7 @@ function drawTeamsOnUSMapGraph(){
 					 	$('#cover').show();
 					teamBasedMatchesStats(d);
 				});
-			});  
+			});
 		});
 	});
 }
@@ -632,7 +632,7 @@ function drawTeamsOnUSMapGraph(){
 
 function drawLineBarQuarterChart(){
 	drawWinsLoseChart();
-	// defaulted to win 
+	// defaulted to win
 	drawBarQuarterImpChart(curYear,1);
 	 	$('#cover').hide();
 
@@ -705,7 +705,7 @@ function drawBarQuarterImpChart(year,winRLoss)
     }else{
     	barQuarterChange(dataSetQuarterLoss);
     }
-   
+
 
     function barQuarterChange(dataset) {
 
@@ -735,7 +735,7 @@ function drawBarQuarterImpChart(year,winRLoss)
 					"transform",
 					"translate(" + (width / 2) + " ," + (height + margin.bottom)
 							+ ")").style("text-anchor", "middle").text("No of " + axisLable);
-				
+
 		svg.append("text").attr("y",
 				-12).attr("x",  -25 ).attr("dy", "0.3em")
 				.style("text-anchor", "middle").text("Quarters");
@@ -819,7 +819,7 @@ function drawWinsLoseChart()
 	            winLoseChange(dataSetLoss);
 	            drawBarQuarterImpChart(winLoseTrendYear,2);
 	        }
-       
+
     });
 
 
@@ -899,12 +899,12 @@ function drawWinsLoseChart()
                 .call(yAxis)
                 ;
 
-       	$(".line_winslose .axislabel").remove();   
+       	$(".line_winslose .axislabel").remove();
         svg.append("text").attr("class","axislabel").attr(
 					"transform",
 					"translate(" + (width / 2) + " ," + (height + margin.bottom)
 							+ ")").style("text-anchor", "middle").text("Year");
-				
+
 		svg.append("text").attr("transform", "rotate(-90)").attr("class","axislabel").attr("y",
 				0 - margin.left+10).attr("x", 0 - (height / 2)).attr("dy", "0.3em")
 				.style("text-anchor", "middle").text("No of "+axisLable);
@@ -920,7 +920,7 @@ function drawWinsLoseChart()
                 .attr("x", function(d) {return x(d.label); })
                 .attr("height", function(d) { return y(d.value); })
                 .attr("width", x.rangeBand())
-                .style("stroke-width","3px") 
+                .style("stroke-width","3px")
                 .style("stroke", function(d){
                 	if(d.label == "2016"){
                 		return "black";
@@ -949,7 +949,7 @@ function drawWinsLoseChart()
                    if( $('.winLoseMatchForm input[type=radio][name=datasetWinLoseMatch]:checked').val() == "win"){
 				        drawBarQuarterImpChart(d.label,1);
 				    }
-				    else{			           
+				    else{
 				         drawBarQuarterImpChart(d.label,2);
        				}
             });
@@ -1000,7 +1000,7 @@ function teamBasedMatchesStats(currentTeam){
 		    		}else if (parseInt($.trim(obj[quarterArr[i]].split("-")[0])) <  parseInt($.trim(obj[quarterArr[i]].split("-")[1]))){
 		    			quarterBasedWinDic[obj["Year"]][quarterArr[i]+"L"]++;
 		    		}
-		    		
+
 		    	}
 
 		    }
@@ -1009,7 +1009,7 @@ function teamBasedMatchesStats(currentTeam){
 			if(obj["Team code"] == currentTeam.teamcode &&  obj["Year"]==curYear){
 					matchCounter++;
 				    tableRows+="<tr team='"+obj["Team"]+"' possession='"+ obj["Possession"] +"' totalyards='"+obj["Total Yards"] + "' firstdowns='"+obj["First Downs"]+ "' q1='"+obj["Q1"]+ "' q2='"+obj["Q2"]+"' q3='"+obj["Q3"]+"' q4='"+obj["Q4"]+  "'><td class='col-xs-3'>"+obj["Week"] +"</td><td class='col-xs-6'>"+obj["Opponent_team"]+"</td><td class='col-xs-3'>"+obj["Win/lose"]+"&nbsp;"+obj["Score"] +"</td></tr>";
-			
+
 				    /*if(matchCounter ==17){
 				    	return false;
 				    }*/
@@ -1028,7 +1028,7 @@ function teamBasedMatchesStats(currentTeam){
 
 		drawLineBarQuarterChart();
 
-	}); 
+	});
 
 }
 
@@ -1114,7 +1114,7 @@ function drawPossesionDonut(donutData){
 			.text(function(d) {
 				return d.data.label;
 			});
-		
+
 		function midAngle(d){
 			return d.startAngle + (d.endAngle - d.startAngle)/2;
 		}
@@ -1148,7 +1148,7 @@ function drawPossesionDonut(donutData){
 
 		var polyline = svg.select(".lines").selectAll("polyline")
 			.data(pie(data), key);
-		
+
 		polyline.enter()
 			.append("polyline");
 
@@ -1162,9 +1162,9 @@ function drawPossesionDonut(donutData){
 					var pos = outerArc.centroid(d2);
 					pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
 					return [arc.centroid(d2), outerArc.centroid(d2), pos];
-				};			
+				};
 			});
-		
+
 		polyline.exit()
 			.remove();
 	}
@@ -1184,7 +1184,7 @@ function donutDataHelper (matchSel){
 	b = parseFloat(possession[1].split(":")[0])+parseFloat(parseInt(possession[1].split(":")[1])/60)
 	console.log(possession);
 	possessionObjects.push({label:matchSel.attr("team"),value:a})
-	possessionObjects.push({label:matchSel.find("td").eq(1).html(),value:b}) 
+	possessionObjects.push({label:matchSel.find("td").eq(1).html(),value:b})
 
 	return possessionObjects;
 }
@@ -1202,7 +1202,7 @@ function drawTotalYards(matchSel){
 		size = yardsArr[1];
 	}
 	$(".homeprogress").empty();
-	$(".opponentprogress").empty();	
+	$(".opponentprogress").empty();
 	drawTotalYardsHelper(".totalyardscover .homeprogress",yardsArr[0],"#a8a8a8",size);
 	drawTotalYardsHelper(".totalyardscover .opponentprogress",yardsArr[1],"#02244a",size);
 
@@ -1259,7 +1259,7 @@ function drawTotalYardsHelper(curProgress,value,color,size){
 
 	progress.transition()
 		.duration(1000)
-		.attr('width', function(){		
+		.attr('width', function(){
 			return value*263.835/size;
 		});
 
@@ -1275,7 +1275,7 @@ function drawFirstDowns(matchSel){
 
 
 function drawRespectiveLineGraphs(curTr,category,player){
-	
+
 	var curPlayerTrendEle = curTr.parents(".leadertablegraphCover").find(".playertrends"+category);
 	var curPlayerName = curTr.find("td").eq(0).html()
 	curPlayerTrendEle.empty();
@@ -1307,7 +1307,7 @@ function drawRespectiveLineGraphs(curTr,category,player){
 							tempDic["value"] = parseInt(String(obj["YDS"]).replace(",", ""));
 						}
 						else{
-							tempDic["value"] = parseInt(String(obj["COMB"]).replace(",", ""));	
+							tempDic["value"] = parseInt(String(obj["COMB"]).replace(",", ""));
 						}
 						playerPastTenYearsArr.push(tempDic);
 					}
@@ -1445,7 +1445,7 @@ function drawRespectiveLineGraphs(curTr,category,player){
 					svg.append("g").attr("class", "y axis").call(yAxis);
 					var totalLength = path.node().getTotalLength();
 					d3.select(path.node())
-						  .attr("stroke-dasharray", totalLength  ) 
+						  .attr("stroke-dasharray", totalLength  )
 						  .attr("stroke-dashoffset", totalLength)
 						  .transition()
 							.duration(1000)
@@ -1454,7 +1454,7 @@ function drawRespectiveLineGraphs(curTr,category,player){
 
 							var totalLength1 = path1.node().getTotalLength();
 					d3.select(path1.node())
-						  .attr("stroke-dasharray", totalLength  ) 
+						  .attr("stroke-dasharray", totalLength  )
 						  .attr("stroke-dashoffset", totalLength)
 						  .transition()
 							.duration(1000)
@@ -1464,7 +1464,7 @@ function drawRespectiveLineGraphs(curTr,category,player){
 					"transform",
 					"translate(" + (width / 2) + " ," + (height + margin.bottom)
 							+ ")").style("text-anchor", "middle").text("Year");
-				
+
 			svg.append("text").attr("transform", "rotate(-90)").attr("y",
 				0 - margin.left+45).attr("x", 0 - (height / 2)).attr("dy", "0.3em")
 				.style("text-anchor", "middle").text("Yards");
@@ -1481,7 +1481,7 @@ function drawRespectiveLineGraphs(curTr,category,player){
 		    	.enter().append("g")
 		      .attr("class", "legend")
 		      .attr("transform", function(d, i) {var val=(i*10)-30; return "translate(500," + val + ")"; });
-	
+
 		  legend.append("rect")
 		      .attr("x", -150)
 		      .attr("width", 10)
@@ -1489,15 +1489,15 @@ function drawRespectiveLineGraphs(curTr,category,player){
 		      .style("fill", function(d){
 		    	console.log(d.value); return d.value;
 		      });
-	
+
 		  legend.append("text")
 		      .attr("x", -155)
 		      .attr("y", 6)
 		      .attr("dy", ".35em")
 		      .style("text-anchor", "end")
 		      .text(function(d) { return d.name; });
-				
-	});		
+
+	});
 }
 
 start();
